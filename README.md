@@ -1,13 +1,17 @@
 IBM MobileFirst Platform Foundation
 ===
-### Sample Name
+### JSONStore Android
 
 
 ### Usage
-Follow the instructions in the tutorials listed below.
+Follow the instructions in the tutorial(s) listed below.
 
 ### Tutorials
+**JSONStore**
+https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/data/jsonstore/
 
+**JSONStore Java API**
+https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/data/jsonstore/jsonstore-java-api/
 
 ### Supported Levels
 IBM MobileFirst Platform Foundation 7.1
