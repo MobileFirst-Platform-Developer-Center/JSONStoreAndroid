@@ -8,13 +8,13 @@ Follow the instructions in the tutorial(s) listed below.
 
 ### Tutorials
 **JSONStore**
-https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/data/jsonstore/
+https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-8-0/foundation/data/jsonstore/
 
 **JSONStore Java API**
-https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/data/jsonstore/jsonstore-java-api/
+https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-8-0/foundation/data/jsonstore/jsonstore-java-api/
 
 ### Supported Levels
-IBM MobileFirst Platform Foundation 7.1
+IBM MobileFirst Platform Foundation 8.0
 
 ### License
 Copyright 2015 IBM Corp.
