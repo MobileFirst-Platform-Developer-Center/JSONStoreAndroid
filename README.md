@@ -1,17 +1,19 @@
 IBM MobileFirst Platform Foundation
 ===
-### JSONStore Android
-
-
-### Usage
-Follow the instructions in the tutorial(s) listed below.
+## JSONStoreCordova
+An application demonstrating various JSONStore APIs in an Android application.
 
 ### Tutorials
-**JSONStore**
-https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-8-0/foundation/data/jsonstore/
+https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/using-the-mfpf-sdk/jsonstore-android/
 
-**JSONStore Java API**
-https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-8-0/foundation/data/jsonstore/jsonstore-java-api/
+### Usage
+
+1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/).
+2. From the command-line, navigate to the project's root folder.
+2. Add a platform by running the `cordova platform add` command.
+3. Run the Cordova application by running the `cordova run` command.
+
+JSONStore adapter: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 
 ### Supported Levels
 IBM MobileFirst Platform Foundation 8.0
