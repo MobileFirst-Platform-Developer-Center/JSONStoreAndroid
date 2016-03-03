@@ -38,8 +38,8 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
 
     compile group: 'com.ibm.mobile.foundation',
-            name: 'ibmmobilefirstplatformfoundation',
-            version: '7.1.0.0',
+            name: 'ibmmobilefirstplatformfoundationjsonstore',
+            version: '8.0.0-SNAPSHOT',
             ext: 'aar',
             transitive: true
 }

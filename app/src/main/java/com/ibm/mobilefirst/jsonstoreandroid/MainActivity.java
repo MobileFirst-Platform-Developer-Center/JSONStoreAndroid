@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,46 +24,29 @@ import com.worklight.jsonstore.api.WLJSONStore;
 import com.worklight.jsonstore.database.SearchFieldType;
 import com.worklight.wlclient.api.WLClient;
 import com.worklight.wlclient.api.WLFailResponse;
-import com.worklight.wlclient.api.WLProcedureInvocationData;
+import com.worklight.wlclient.api.WLResourceRequest;
 import com.worklight.wlclient.api.WLResponse;
 import com.worklight.wlclient.api.WLResponseListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private WLClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        WLClient.createInstance(this);
+
         initFieldsAndButtons();
-
-        client = WLClient.createInstance(this);
-
-        client.connect(new WLResponseListener(){
-
-            @Override
-            public void onFailure(WLFailResponse arg0) {
-                @SuppressWarnings("unused")
-                WLFailResponse r = arg0;
-            }
-
-            @Override
-            public void onSuccess(WLResponse arg0) {
-                @SuppressWarnings("unused")
-                WLResponse r = arg0;
-
-            }
-
-        });
 
         final Context context = getApplicationContext();
 
@@ -559,8 +543,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
 
-                WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "getPeople");
-                client.invokeProcedure(invocationData, responseListener);
+                try {
+                    WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
+                    request.send(responseListener);
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -626,10 +614,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
 
-                    WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "pushPeople");
+                    JSONObject payload = new JSONObject();
+                    payload.put("people", dirtyDocuments);
 
-                    invocationData.setParameters(new Object[]{dirtyDocuments});
-                    client.invokeProcedure(invocationData, responseListener);
+                    try {
+                        WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/pushPeople"), WLResourceRequest.POST);
+                        request.send(payload, responseListener);
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
 
 
                 } catch (Exception e) {
@@ -745,6 +738,7 @@ public class MainActivity extends AppCompatActivity {
         consoleTextView.setTextColor(Color.RED);
         consoleTextView.setText("ERROR:\n" + message);
 
+        hideKeyboard();
     }
 
     private void logList(String heading, List<JSONObject> list) {
@@ -758,12 +752,22 @@ public class MainActivity extends AppCompatActivity {
             consoleText.append(object.toString() + "\n");
 
         }
-        consoleTextView.setText(consoleText.toString());
+
+        logMessage(consoleText.toString());
     }
 
     private void logMessage(String messageId) {
         consoleTextView.setTextColor(Color.WHITE);
         consoleTextView.setText(messageId);
+        hideKeyboard();
+    }
+
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     private void initFieldsAndButtons() {

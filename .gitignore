@@ -27,3 +27,10 @@ proguard/
 
 .jazzignore
 /pom.xml
+
+# Android Studio
+/.idea/workspace.xml
+/.idea/libraries
+
+# Mac OS X
+.DS_Store
