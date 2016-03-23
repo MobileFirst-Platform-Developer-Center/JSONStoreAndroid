@@ -37,9 +37,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
 
-    compile group: 'com.ibm.mobile.foundation',
-            name: 'ibmmobilefirstplatformfoundationjsonstore',
-            version: '8.0.0-SNAPSHOT',
-            ext: 'aar',
-            transitive: true
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.0-SNAPSHOT'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.0-SNAPSHOT'
 }
