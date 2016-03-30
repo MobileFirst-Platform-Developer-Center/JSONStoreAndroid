@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 
 repositories{
-    jcenter()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
 }
 
 
@@ -38,5 +40,8 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
 
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+    compile('com.ibm.mobile.foundation:jsonstore:8.0.+@aar') {
+        transitive = true
+    }
 }
+
