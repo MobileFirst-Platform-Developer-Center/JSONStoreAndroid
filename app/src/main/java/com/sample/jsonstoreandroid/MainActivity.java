@@ -38,7 +38,6 @@ import com.worklight.jsonstore.api.JSONStoreRemoveOptions;
 import com.worklight.jsonstore.api.JSONStoreReplaceOptions;
 import com.worklight.jsonstore.api.WLJSONStore;
 import com.worklight.jsonstore.database.SearchFieldType;
-import com.worklight.wlclient.api.WLClient;
 import com.worklight.wlclient.api.WLFailResponse;
 import com.worklight.wlclient.api.WLResourceRequest;
 import com.worklight.wlclient.api.WLResponse;
@@ -632,6 +631,7 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
                         WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/pushPeople"), WLResourceRequest.POST);
+                        request.addHeader("Content-Type","application/x-www-form-urlencoded");
                         request.send(payload, responseListener);
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
