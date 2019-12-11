@@ -24,6 +24,10 @@ import com.worklight.wlclient.api.WLClient;
 public class JSONStoreApplication extends Application {
     public void onCreate() {
         super.onCreate();
-        WLClient.createInstance(this);
+        try{
+            WLClient.createInstance(this);
+        }catch (RuntimeException runtimeEx){
+            Log.e("JSONStoreApplication" , runtimeEx.getLocalizedMessage() );
+        }
     }
 }
